@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quiz_app_kurs12/pages/cubit/home_cubit.dart';
 import 'package:quiz_app_kurs12/pages/home_page.dart';
 
 void main() {
@@ -12,7 +14,10 @@ class QuizApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: BlocProvider(
+        create: (context) => HomeCubit(),
+        child: HomePage(),
+      ),
     );
   }
 }

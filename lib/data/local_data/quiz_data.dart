@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:quiz_app_kurs12/models/questions_model.dart';
 
 class QuizData {
-  int index = 0;
-  static List<QuestionModel> suroolorJooptor = [
+  // int index = 0;
+  List<QuestionModel> suroolorJooptor = [
     QuestionModel(
       suroolor: 'Kyrgyzstanda 7 oblast barby?',
       jooptor: true,
@@ -19,29 +19,29 @@ class QuizData {
     ),
   ];
 
-  String suroonuAlipKel() {
-    if (index < suroolorJooptor.length) {
-      return suroolorJooptor[index].suroolor!;
-    } else {
-      return '';
-    }
-  }
+  // String suroonuAlipKel() {
+  //   if (index < suroolorJooptor.length) {
+  //     return suroolorJooptor[index].suroolor!;
+  //   } else {
+  //     return '';
+  //   }
+  // }
 
-  bool joopAlipKel() {
-    if (index < suroolorJooptor.length) {
-      return suroolorJooptor[index].jooptor!;
-    } else {
-      return false;
-    }
-  }
+  // bool joopAlipKel() {
+  //   if (index < suroolorJooptor.length) {
+  //     return suroolorJooptor[index].jooptor!;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
-  void otkoz() {
-    index++;
-  }
+  // void otkoz() {
+  //   index = index + 1;
+  // }
 
-  void kairabashta() {
-    index = 0;
-  }
+  // void kairabashta() {
+  //   index = 0;
+  // }
 }
 
 final QuizData quizData = QuizData();
