@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   int count = 0;
   @override
   Widget build(BuildContext context) {
+    //  final state = context.read<HomeCubit>().state;
     log('build ===> ${count++}');
     return SafeArea(
       child: Scaffold(
@@ -32,9 +33,13 @@ class _HomePageState extends State<HomePage> {
                           TextButton(
                             onPressed: () {
                               // state.buutubu = false;
-                              context.read<HomeCubit>().alertBloc();
+
+                              // context.watch<HomeCubit>().alertBloc();
+                              BlocProvider.of<HomeCubit>(context, listen: false)
+                                  .alertBloc();
+
                               // state.iconkalar = [];
-                              setState(() {});
+                              // setState(() {});
                             },
                             child: const Text("Kaira bashta"),
                           ),

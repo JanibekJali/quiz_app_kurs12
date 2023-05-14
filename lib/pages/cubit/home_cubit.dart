@@ -1,9 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz_app_kurs12/data/local_data/quiz_data.dart';
-
-import 'package:quiz_app_kurs12/models/questions_model.dart';
+import 'package:quiz_app_kurs12/pages/services/question.service.dart';
 
 part 'home_state.dart';
 
@@ -11,36 +9,17 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeState(iconkalar: []));
 
   void alertBloc() {
-    emit(state.copyWith(buutubu: state.buutubu = false));
+    emit(state.copyWith(buutubu: false, iconkalar: [], index: 0));
 
-    // context.read<HomeCubit>().falseKyl();
-    // context.read<HomeCubit>().iconkalardyTazala();
-    emit(state.copyWith(iconkalar: state.iconkalar = []));
-    // state.iconkalar = [];
-    kairabashta();
     // setState(() {});
   }
 
-  // void iconkalardyTazala() {
-  //   emit(
-  //     state.copyWith(iconkalar: state.iconkalar = []),
-  //   );
-  // }
-
   String suroonuAlipKel() {
-    if (state.index < quizData.suroolorJooptor.length) {
-      return quizData.suroolorJooptor[state.index].suroolor!;
-    } else {
-      return '';
-    }
+    return QuestionService.suroonuAlipKel(state.index);
   }
 
   bool joopAlipKel() {
-    if (state.index < quizData.suroolorJooptor.length) {
-      return quizData.suroolorJooptor[state.index].jooptor!;
-    } else {
-      return false;
-    }
+    return QuestionService.joopAlipKel(state.index);
   }
 
   void otkoz() {
@@ -48,12 +27,12 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   void falseKyl() {
-    emit(state.copyWith(buutubu: state.buutubu = true));
+    emit(state.copyWith(buutubu: true));
   }
 
-  void kairabashta() {
-    emit(state.copyWith(index: state.index = 0));
-  }
+  // void kairabashta() {
+  //   emit(state.copyWith(index: 0));
+  // }
 
   void userdinJoobu(bool userJoobu) {
     final jooptor = joopAlipKel();
@@ -81,7 +60,7 @@ class HomeCubit extends Cubit<HomeState> {
     }
     otkoz();
     if (suroonuAlipKel() == '') {
-      emit(state.copyWith(buutubu: state.buutubu = true));
+      emit(state.copyWith(buutubu: true));
     }
   }
 }
